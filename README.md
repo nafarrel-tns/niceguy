@@ -96,7 +96,7 @@ Rancangan tata letak (*wireframe*) sederhana untuk antarmuka web FundFlow:
 |  +------------+--------------------+------------+--------+----------+ |
 +-----------------------------------------------------------------------+
 |  FORM Ulasan Akuntabilitas Mahasiswa:                                 |
-|  Rating: [ ★ ★ ★ ★ ☆ ]                                                |
+|  Rating: [ ★ ★ ★ ★ ☆ ]                                              |
 |  Ulasan: [ Masukkan ulasan transparansi kas ormawa ini...           ] |
 |  [ Kirim Ulasan ]                                                     |
 +-----------------------------------------------------------------------+

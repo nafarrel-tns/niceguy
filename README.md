@@ -1,39 +1,42 @@
-# 
+# FundFlow
 
--
+**FundFlow** adalah platform berbasis web pencatatan keuangan dan pengawasan kinerja terpadu untuk organisasi kemahasiswaan (BEM, DPM, Himpunan, dan UKM). Platform ini memfasilitasi pengurus organisasi untuk mengunggah bukti nota transaksi secara terbuka dan *real-time*, sekaligus memberikan akses publik bagi mahasiswa umum untuk memantau saldo, melihat transparansi alokasi dana, serta menilai akuntabilitas tata kelola ormawa.
+
 ---
 
 ## 1. Anggota Kelompok
 
-| No | Nama   | NPM    |
+| No | Nama    | NPM    |
 |----|--------|--------|
 | 1  | Nafarrel | 250013 |
 | 2  | Salomo   | 250034 |
-| 3  | Rasyid | 250076 |
+| 3  | Rasyid   | 250076 |
 
 ---
 
 ## 2. Fungsi
 
-Website ini menjadi wadah bagi pemilik UMKM untuk **mengajukan promosi usahanya** secara online. Pengajuan yang masuk akan diverifikasi oleh admin sebelum tampil di direktori publik, sehingga informasi yang dipromosikan tetap terjaga kualitas dan keakuratannya. Pengunjung umum dapat menjelajahi direktori UMKM yang sudah disetujui, melihat detail produk/menu, lokasi, dan kontak.
+Website ini menjadi wadah publik untuk **memantau efektivitas, transparansi, dan akuntabilitas keuangan organisasi kemahasiswaan**. Pengurus organisasi (bendahara) wajib mencatat transaksi pemasukan dan pengeluaran secara terbuka yang dilengkapi dengan unggahan bukti fisik nota/kuitansi. Setiap laporan pengeluaran diproses dan diverifikasi oleh tim pengawas/auditor (DPM) sebelum diterbitkan di direktori publik.
+
+Mahasiswa umum dapat memantau saldo aktif secara *real-time*, melihat visualisasi grafik alokasi anggaran, serta memberikan *review* dan penilaian (*rating*) terhadap akuntabilitas transparansi masing-masing ormawa.
 
 Fitur utama:
-- Registrasi & login (autentikasi) untuk pemilik UMKM dan admin
-- Form pengajuan promosi UMKM (dengan status pending/approved/rejected)
-- Dashboard admin untuk memverifikasi pengajuan (authorization berbasis role)
-- Direktori & halaman detail UMKM yang sudah disetujui
-- Pencarian/filter UMKM berdasarkan jenis/kategori dan lokasi
+- Autentikasi & Authorization multi-role (`admin/auditor`, `treasurer`, `student`).
+- Form pencatatan transaksi pemasukan dan pengeluaran kas dilengkapi fitur *upload* foto nota/kuitansi fisik.
+- Dashboard pengawasan & verifikasi (*Approve/Reject*) laporan keuangan oleh DPM/Admin.
+- Direktori laporan keuangan publik beserta visualisasi grafik (*chart*) alokasi dana per kategori.
+- Fitur Ulasan & Rating Akuntabilitas bagi mahasiswa untuk menilai tingkat keterbukaan keuangan ormawa.
 
 ---
 
 ## 3. Tujuan (SDG)
 
-**SDG 8 — Pekerjaan Layak dan Pertumbuhan Ekonomi**
+**SDG 16.6 — Mengembangkan Lembaga yang Efektif, Akuntabel, dan Transparan di Semua Tingkat**
 
-Proyek ini mendukung poin SDG 8 dengan cara:
-- Membuka akses promosi digital yang mudah dan gratis bagi pelaku UMKM, terutama yang belum memiliki kehadiran online.
-- Mendorong pertumbuhan ekonomi lokal dengan mempertemukan UMKM dan calon konsumen melalui satu platform terpusat.
-- Mendukung penciptaan lapangan kerja tidak langsung melalui peningkatan visibilitas dan potensi penjualan UMKM.
+Proyek ini mendukung pencapaian target SDG 16.6 dengan cara:
+- **Transparansi Informasi:** Membuka akses penuh bagi seluruh mahasiswa untuk melihat arus kas dan bukti fisik transaksi organisasi secara *real-time*.
+- **Akuntabilitas Kelembagaan:** Mendorong pengurus ormawa untuk mengelola anggaran secara tertib dan dapat dipertanggungjawabkan melalui mekanisme verifikasi laporan.
+- **Partisipasi Pengawasan Publik:** Memberikan wadah evaluasi berbasis ulasan (*review*) dari mahasiswa guna mengukur tingkat efektivitas dan keterbukaan lembaga kemahasiswaan.
 
 ---
 
@@ -41,88 +44,61 @@ Proyek ini mendukung poin SDG 8 dengan cara:
 
 | Pengguna | Kebutuhan |
 |---|---|
-| **Pemilik UMKM** | Mendaftar akun, mengisi form pengajuan promosi, memantau status pengajuan |
-| **Admin/Asisten** | Meninjau & memverifikasi (approve/reject) pengajuan UMKM |
-| **Masyarakat umum/calon pembeli** | Mencari dan melihat informasi UMKM yang telah dipromosikan |
+| **Bendahara Organisasi (`treasurer`)** | Menginput data transaksi kas, mengunggah foto kuitansi/nota, dan mengelola alokasi anggaran internal ormawa. |
+| **DPM / Admin Pengawas (`admin`)** | Meninjau & memverifikasi validitas kuitansi laporan keuangan, mengelola data ormawa, serta memantau skor akuntabilitas. |
+| **Mahasiswa Umum (`student`)** | Memantau saldo aktif, melihat rincian nota transaksi, dan memberikan rating & ulasan transparansi ormawa. |
 
 ---
 
 ## 5. Skema Database (ERD)
 
-Minimal 4 tabel: `users`, `kategori_umkm`, `umkm_submissions`, `produk`.
+Minimal 4 tabel: `users`, `organizations`, `financial_reports`, `accountability_reviews`.
 
 ```mermaid
 erDiagram
-    USERS ||--o{ UMKM_SUBMISSIONS : mengajukan
-    KATEGORI_UMKM ||--o{ UMKM_SUBMISSIONS : mengelompokkan
-    UMKM_SUBMISSIONS ||--o{ PRODUK : memiliki
+    USERS ||--o{ ORGANIZATIONS : mengelola
+    USERS ||--o{ FINANCIAL_REPORTS : mengunggah
+    ORGANIZATIONS ||--o{ FINANCIAL_REPORTS : memiliki
+    ORGANIZATIONS ||--o{ ACCOUNTABILITY_REVIEWS : menerima
 
     USERS {
         bigint id PK
         string name
         string email
         string password
-        enum role "admin, user"
+        enum role "admin, treasurer, student"
         timestamp created_at
         timestamp updated_at
     }
 
-    KATEGORI_UMKM {
+    ORGANIZATIONS {
         bigint id PK
-        string nama_kategori "kuliner, kriya, jasa, fashion, dll"
+        bigint user_id FK "Bendahara Utama"
+        string org_name "Contoh: HMIF, BEM, DPM"
+        string code "Contoh: HMIF"
+        decimal current_balance
+        timestamp created_at
+        timestamp updated_at
     }
 
-    UMKM_SUBMISSIONS {
+    FINANCIAL_REPORTS {
         bigint id PK
+        bigint organization_id FK
         bigint user_id FK
-        bigint kategori_id FK
-        string nama_umkm
-        string lokasi
-        text deskripsi
-        string kontak
-        string foto_usaha
-        enum status "pending, approved, rejected"
+        string title "Contoh: Cetak Spanduk Lomba"
+        enum type "income, expense"
+        string category "Perlengkapan, Konsumsi, Kas"
+        decimal amount
+        string receipt_image "Path foto nota"
+        enum status "draft, verified, rejected"
         timestamp created_at
         timestamp updated_at
     }
 
-    PRODUK {
+    ACCOUNTABILITY_REVIEWS {
         bigint id PK
-        bigint umkm_submission_id FK
-        string nama_produk
-        text deskripsi_produk
-        decimal harga
-        string foto_produk
-    }
-```
-
-**Penjelasan relasi:**
-- 1 `users` (role: user/pemilik UMKM) dapat memiliki banyak `umkm_submissions`.
-- 1 `kategori_umkm` dapat digunakan oleh banyak `umkm_submissions`.
-- 1 `umkm_submissions` dapat memiliki banyak `produk` (menu/produk yang dijual).
-- Admin (`users` dengan role `admin`) memiliki akses authorization untuk mengubah `status` pada `umkm_submissions`.
-
----
-
-## 6. Teknologi
-
-- **Framework:** Laravel 13
-- **Autentikasi/Authorization:** Laravel Breeze/Fortify + middleware role (admin/user)
-- **Frontend:** Semantic HTML, CSS Framework (Bootstrap/Tailwind), opsional SCSS
-- **Database:** MySQL (min. 4 tabel sesuai ERD di atas)
-
----
-
-## 7. Cara Menjalankan Proyek
-
-```bash
-git clone <url-repo>
-cd nama-proyek
-composer install
-cp .env.example .env
-php artisan key:generate
-# atur koneksi database di .env
-php artisan migrate --seed
-npm install && npm run dev
-php artisan serve
-```
+        bigint organization_id FK
+        bigint user_id FK
+        integer rating "Skor 1-5 Bintang"
+        text review_comment "Ulasan transparansi"
+        enum status "pending,

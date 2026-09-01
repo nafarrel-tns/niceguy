@@ -29,7 +29,7 @@ Fitur utama:
 
 ---
 
-## 3. Tujuan (SDG)
+## 3. Tujuan (memenuhi min. 1 poin SDG)
 
 **SDG 16.6 — Mengembangkan Lembaga yang Efektif, Akuntabel, dan Transparan di Semua Tingkat**
 
@@ -50,7 +50,83 @@ Proyek ini mendukung pencapaian target SDG 16.6 dengan cara:
 
 ---
 
-## 5. Skema Database (ERD)
+## 5. Mockup Kasar Sederhana
+
+Rancangan tata letak (*wireframe*) sederhana untuk antarmuka web FundFlow:
+
+### Halaman Utama (Public / Student)
+
+```
+
++-----------------------------------------------------------------------+
+|  [Logo] FundFlow       [Direktori] [Peringkat]        [Login/Register]|
++-----------------------------------------------------------------------+
+|  HERO: Transparansi Dana Kemahasiswaan Kampus                         |
+|  [ Total Kas Terkelola: Rp XX.XXX.XXX ] [ Ormawa Terdaftar: XX ]      |
++-----------------------------------------------------------------------+
+|  SEARCH & FILTER: [ Cari Ormawa... (HMIF/BEM) ] [ Filter Kategori v ] |
+|                                                                       |
+|  +---------------------------+     +---------------------------+      |
+|  | Card: HMIF                |     | Card: BEM KEMA            |      |
+|  | Saldo: Rp 5.000.000       |     | Saldo: Rp 12.000.000      |      |
+|  | Status: Highly Accountable|     | Status: Moderate          |      |
+|  | [ Lihat Laporan Kas ]     |     | [ Lihat Laporan Kas ]     |      |
+|  +---------------------------+     +---------------------------+      |
++-----------------------------------------------------------------------+
+|  FOOTER: FundFlow © 2026 - Supporting SDG 16.6                        |
++-----------------------------------------------------------------------+
+
+```
+
+### Halaman Detail Laporan Ormawa & Input Review
+
+```
+
++-----------------------------------------------------------------------+
+|  HMIF (Himpunan Mahasiswa Informatika) - Laporan Transparansi Kas     |
++-----------------------------------------------------------------------+
+|  Saldo Saat Ini: Rp 5.000.000                                         |
+|  [ CHART: Visualisasi Alokasi Pengeluaran (Perlengkapan/Konsumsi) ]   |
++-----------------------------------------------------------------------+
+|  TABEL TRANSAKSI KAS TERVERIFIKASI:                                   |
+|  +------------+--------------------+------------+--------+----------+ |
+|  | Tanggal    | Keterangan         | Nominal    | Tipe   | Nota     | |
+|  +------------+--------------------+------------+--------+----------+ |
+|  | 01/09/2026 | Beli Spanduk Lomba | Rp 250.000 | Keluar | [Lihat]  | |
+|  +------------+--------------------+------------+--------+----------+ |
++-----------------------------------------------------------------------+
+|  FORM Ulasan Akuntabilitas Mahasiswa:                                 |
+|  Rating: [ ★ ★ ★ ★ ☆ ]                                                |
+|  Ulasan: [ Masukkan ulasan transparansi kas ormawa ini...           ] |
+|  [ Kirim Ulasan ]                                                     |
++-----------------------------------------------------------------------+
+
+```
+
+### Dashboard Management (Admin & Treasurer)
+
+```
+
++-----------------------------------------------------------------------+
+|  DASHBOARD [Treasurer / Admin]                 [ User Profile ] [Logout]|
++-----------------------------------------------------------------------+
+|  + Form Input Transaksi Baru (Khusus Treasurer)                       |
+|  | Judul Transaksi  : [***]                       |
+|  | Tipe Transaksi   : (o) Pemasukan  ( ) Pengeluaran                  |
+|  | Nominal (Rp)     : [***]                       |
+|  | Upload Foto Nota : [ Choose File... ]                              |
+|  | [ Simpan Transaksi ]                                               |
++-----------------------------------------------------------------------+
+|  + Tabel Moderasi Verifikasi (Khusus Admin / DPM)                     |
+|  | Judul        | Bendahara | Foto Nota | Status   | Aksi             |
+|  | Cetak Banner | HMIF      | nota.jpg  | Pending  | [Approve][Reject]|
++-----------------------------------------------------------------------+
+
+```
+
+---
+
+## 6. Skema Database
 
 Minimal 4 tabel: `users`, `organizations`, `financial_reports`, `accountability_reviews`.
 
@@ -101,4 +177,20 @@ erDiagram
         bigint user_id FK
         integer rating "Skor 1-5 Bintang"
         text review_comment "Ulasan transparansi"
-        enum status "pending,
+        enum status "pending, approved, rejected"
+        timestamp created_at
+        timestamp updated_at
+    }
+
+```
+
+**Penjelasan relasi:**
+
+* 1 `users` (role `treasurer`) mengelola 1 `organizations` dan mengunggah banyak `financial_reports`.
+* 1 `organizations` memiliki banyak `financial_reports` (pemasukan & pengeluaran).
+* 1 `organizations` menerima banyak `accountability_reviews` (ulasan transparansi dari mahasiswa).
+* Admin/Auditor (`users` dengan role `admin`) memiliki kewenangan authorization untuk memverifikasi `status` pada `financial_reports` dan memoderasi `accountability_reviews`.
+
+```
+
+```

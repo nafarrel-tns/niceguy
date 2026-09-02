@@ -1,6 +1,6 @@
 # FundFlow
 
-**FundFlow** adalah platform berbasis web pencatatan keuangan dan pengawasan kinerja terpadu untuk organisasi kemahasiswaan (BEM, DPM, Himpunan, dan UKM). Platform ini memfasilitasi pengurus organisasi untuk mengunggah bukti nota transaksi secara terbuka dan *real-time*, sekaligus memberikan akses publik bagi mahasiswa umum untuk memantau saldo, melihat transparansi alokasi dana, serta menilai akuntabilitas tata kelola ormawa.
+**FundFlow** adalah platform berbasis web untuk transparansi dan akuntabilitas alokasi dana pendidikan kampus (UKT, IPI, dan dana operasional universitas). Platform ini memfasilitasi pihak pengelola kampus untuk mempublikasikan laporan realisasi anggaran beserta bukti nota/dokumen pengadaan fasilitas secara *real-time*, sekaligus memberikan akses bagi mahasiswa umum untuk melacak aliran dana kampus, memantau kondisi fasilitas, serta menilai kesesuaian antara biaya pendidikan dan fasilitas yang diterima.
 
 ---
 
@@ -16,16 +16,16 @@
 
 ## 2. Fungsi
 
-Website ini menjadi wadah publik untuk **memantau efektivitas, transparansi, dan akuntabilitas keuangan organisasi kemahasiswaan**. Pengurus organisasi (bendahara) wajib mencatat transaksi pemasukan dan pengeluaran secara terbuka yang dilengkapi dengan unggahan bukti fisik nota/kuitansi. Setiap laporan pengeluaran diproses dan diverifikasi oleh tim pengawas/auditor (DPM) sebelum diterbitkan di direktori publik.
+Website ini menjadi wadah publik untuk **memantau efektivitas, transparansi, dan akuntabilitas alokasi dana kampus (UKT & IPI) terhadap pembangunan serta pemeliharaan fasilitas universitas**. Pihak pengelola kampus (staf keuangan/sarpras) wajib mengunggah Laporan Realisasi Anggaran (LRA) beserta bukti dokumen pengadaan barang/jasa. Setiap laporan pengeluaran diproses dan diverifikasi oleh tim auditor internal/rektorat sebelum diterbitkan di direktori publik.
 
-Mahasiswa umum dapat memantau saldo aktif secara *real-time*, melihat visualisasi grafik alokasi anggaran, serta memberikan *review* dan penilaian (*rating*) terhadap akuntabilitas transparansi masing-masing ormawa.
+Mahasiswa umum dapat melihat grafik persentase alokasi dana UKT (misal: berapa % untuk fasilitas laboratorium, Wi-Fi, gedung, atau kegiatan kampus), melacak bukti pengadaan sarana publik, serta memberikan *review* dan ulasan kesesuaian fasilitas di lapangan.
 
 Fitur utama:
-- Autentikasi & Authorization multi-role (`admin/auditor`, `treasurer`, `student`).
-- Form pencatatan transaksi pemasukan dan pengeluaran kas dilengkapi fitur *upload* foto nota/kuitansi fisik.
-- Dashboard pengawasan & verifikasi (*Approve/Reject*) laporan keuangan oleh DPM/Admin.
-- Direktori laporan keuangan publik beserta visualisasi grafik (*chart*) alokasi dana per kategori.
-- Fitur Ulasan & Rating Akuntabilitas bagi mahasiswa untuk menilai tingkat keterbukaan keuangan ormawa.
+- Autentikasi & Authorization multi-role (`admin/auditor`, `campus_staff`, `student`).
+- Form pencatatan alokasi dana dan pemeliharaan fasilitas kampus dilengkapi fitur *upload* foto nota/dokumen pengadaan.
+- Dashboard pengawasan & verifikasi (*Approve/Reject*) laporan alokasi anggaran oleh Auditor Kampus/Admin.
+- Direktori laporan keuangan publik beserta visualisasi grafik (*chart*) distribusi dana UKT/IPI ke tiap sektor fasilitas.
+- Fitur Ulasan & Rating Kelayakan Fasilitas bagi mahasiswa untuk menilai apakah kualitas fasilitas di lapangan sudah sesuai dengan anggaran yang dipublikasikan.
 
 ---
 
@@ -34,9 +34,9 @@ Fitur utama:
 **SDG 16.6 — Mengembangkan Lembaga yang Efektif, Akuntabel, dan Transparan di Semua Tingkat**
 
 Proyek ini mendukung pencapaian target SDG 16.6 dengan cara:
-- **Transparansi Informasi:** Membuka akses penuh bagi seluruh mahasiswa untuk melihat arus kas dan bukti fisik transaksi organisasi secara *real-time*.
-- **Akuntabilitas Kelembagaan:** Mendorong pengurus ormawa untuk mengelola anggaran secara tertib dan dapat dipertanggungjawabkan melalui mekanisme verifikasi laporan.
-- **Partisipasi Pengawasan Publik:** Memberikan wadah evaluasi berbasis ulasan (*review*) dari mahasiswa guna mengukur tingkat efektivitas dan keterbukaan lembaga kemahasiswaan.
+- **Transparansi Alokasi Dana:** Membuka akses penuh bagi mahasiswa untuk melihat bukti penggunaan dana UKT/IPI dan pemeliharaan fasilitas kampus secara transparan.
+- **Akuntabilitas Lembaga Pendidikan:** Menghindari fenomena "UKT/IPI tinggi namun fasilitas minim" dengan mewajibkan transparansi pengeluaran dan verifikasi audit internal.
+- **Partisipasi Pengawasan Mahasiswa:** Memberikan wadah evaluasi berbasis ulasan (*review*) kondisi fasilitas fisik secara *real-time* dari mahasiswa guna mendorong perbaikan fasilitas yang lambat atau terbengkalai.
 
 ---
 
@@ -44,9 +44,9 @@ Proyek ini mendukung pencapaian target SDG 16.6 dengan cara:
 
 | Pengguna | Kebutuhan |
 |---|---|
-| **Bendahara Organisasi (`treasurer`)** | Menginput data transaksi kas, mengunggah foto kuitansi/nota, dan mengelola alokasi anggaran internal ormawa. |
-| **DPM / Admin Pengawas (`admin`)** | Meninjau & memverifikasi validitas kuitansi laporan keuangan, mengelola data ormawa, serta memantau skor akuntabilitas. |
-| **Mahasiswa Umum (`student`)** | Memantau saldo aktif, melihat rincian nota transaksi, dan memberikan rating & ulasan transparansi ormawa. |
+| **Staf Keuangan/Sarpras Kampus (`campus_staff`)** | Menginput data alokasi pengeluaran dana UKT/IPI, mengunggah foto nota/dokumen pengadaan fasilitas, dan mengelola direktori sarana kampus. |
+| **Auditor Kampus / Admin (`admin`)** | Meninjau & memverifikasi validitas kuitansi/dokumen pengadaan fasilitas, mengelola data kategori fasilitas, serta memantau skor akuntabilitas institusi. |
+| **Mahasiswa Umum (`student`)** | Memantau persentase alokasi dana UKT/IPI, melihat bukti dokumen pengadaan fasilitas, dan memberikan ulasan/rating kesesuaian fasilitas di kampus. |
 
 ---
 
@@ -59,18 +59,18 @@ Rancangan tata letak (*wireframe*) sederhana untuk antarmuka web FundFlow:
 ```
 
 +-----------------------------------------------------------------------+
-|  [Logo] FundFlow       [Direktori] [Peringkat]        [Login/Register]|
+|  [Logo] FundFlow       [Alokasi UKT] [Fasilitas Kampus] [Login/Register]|
 +-----------------------------------------------------------------------+
-|  HERO: Transparansi Dana Kemahasiswaan Kampus                         |
-|  [ Total Kas Terkelola: Rp XX.XXX.XXX ] [ Ormawa Terdaftar: XX ]      |
+|  HERO: Transparansi Alokasi Dana UKT/IPI & Fasilitas Kampus           |
+|  [ Total Dana Terkelola: Rp XXX Miliar ] [ Fasilitas Terdata: XX ]    |
 +-----------------------------------------------------------------------+
-|  SEARCH & FILTER: [ Cari Ormawa... (HMIF/BEM) ] [ Filter Kategori v ] |
+|  SEARCH & FILTER: [ Cari Fasilitas/Gedung... ] [ Filter Sektor v ]    |
 |                                                                       |
 |  +---------------------------+     +---------------------------+      |
-|  | Card: HMIF                |     | Card: BEM KEMA            |      |
-|  | Saldo: Rp 5.000.000       |     | Saldo: Rp 12.000.000      |      |
-|  | Status: Highly Accountable|     | Status: Moderate          |      |
-|  | [ Lihat Laporan Kas ]     |     | [ Lihat Laporan Kas ]     |      |
+|  | Sektor: Laboratorium Komp |     | Sektor: Infrastruktur Wi-Fi|      |
+|  | Anggaran : Rp 1.500.000.000|     | Anggaran : Rp 800.000.000 |      |
+|  | Rating   : ★ ★ ★ ★ ☆      |     | Rating   : ★ ★ ☆ ☆ ☆      |      |
+|  | [ Lihat Rincian Pengadaan]|     | [ Lihat Rincian Pengadaan]|      |
 |  +---------------------------+     +---------------------------+      |
 +-----------------------------------------------------------------------+
 |  FOOTER: FundFlow © 2026 - Supporting SDG 16.6                        |
@@ -78,48 +78,48 @@ Rancangan tata letak (*wireframe*) sederhana untuk antarmuka web FundFlow:
 
 ```
 
-### Halaman Detail Laporan Ormawa & Input Review
+### Halaman Detail Alokasi Sektor & Input Review Fasilitas
 
 ```
 
 +-----------------------------------------------------------------------+
-|  HMIF (Himpunan Mahasiswa Informatika) - Laporan Transparansi Kas     |
+|  Alokasi Sektor: Pemeliharaan & Perbaikan Wi-Fi Kampus                |
 +-----------------------------------------------------------------------+
-|  Saldo Saat Ini: Rp 5.000.000                                         |
-|  [ CHART: Visualisasi Alokasi Pengeluaran (Perlengkapan/Konsumsi) ]   |
+|  Total Anggaran Terpakai: Rp 800.000.000                              |
+|  [ CHART: Persentase Distribusi Dana UKT per Fakultas ]               |
 +-----------------------------------------------------------------------+
-|  TABEL TRANSAKSI KAS TERVERIFIKASI:                                   |
-|  +------------+--------------------+------------+--------+----------+ |
-|  | Tanggal    | Keterangan         | Nominal    | Tipe   | Nota     | |
-|  +------------+--------------------+------------+--------+----------+ |
-|  | 01/09/2026 | Beli Spanduk Lomba | Rp 250.000 | Keluar | [Lihat]  | |
-|  +------------+--------------------+------------+--------+----------+ |
+|  TABEL DOKUMEN PENGADAAN & MAINTENANCE TERVERIFIKASI:                 |
+|  +------------+--------------------+--------------+--------+----------+
+|  | Tanggal    | Keterangan         | Nominal      | Tipe   | Dokumen  |
+|  +------------+--------------------+--------------+--------+----------+
+|  | 12/08/2026 | Upgrade Router GKU | Rp 50.000.000| Keluar | [Lihat]  |
+|  +------------+--------------------+--------------+--------+----------+
 +-----------------------------------------------------------------------+
-|  FORM Ulasan Akuntabilitas Mahasiswa:                                 |
-|  Rating: [ ★ ★ ★ ★ ☆ ]                                              |
-|  Ulasan: [ Masukkan ulasan transparansi kas ormawa ini...           ] |
-|  [ Kirim Ulasan ]                                                     |
+|  FORM Ulasan Kualitas Fasilitas Lapangan oleh Mahasiswa:              |
+|  Rating Kelayakan : [ ★ ★ ☆ ☆ ☆ ]                                     |
+|  Ulasan Fasilitas : [ Masukkan kondisi riil fasilitas di kampus...  ] |
+|  [ Kirim Ulasan Fasilitas ]                                           |
 +-----------------------------------------------------------------------+
 
 ```
 
-### Dashboard Management (Admin & Treasurer)
+### Dashboard Management (Admin & Campus Staff)
 
 ```
 
 +-----------------------------------------------------------------------+
-|  DASHBOARD [Treasurer / Admin]                 [ User Profile ] [Logout]|
+|  DASHBOARD [Campus Staff / Admin]             [ User Profile ] [Logout]|
 +-----------------------------------------------------------------------+
-|  + Form Input Transaksi Baru (Khusus Treasurer)                       |
-|  | Judul Transaksi  : [***]                       |
-|  | Tipe Transaksi   : (o) Pemasukan  ( ) Pengeluaran                  |
-|  | Nominal (Rp)     : [***]                       |
-|  | Upload Foto Nota : [ Choose File... ]                              |
-|  | [ Simpan Transaksi ]                                               |
+|  + Form Input Alokasi Anggaran & Pengadaan Baru (Khusus Staff)        |
+|  | Judul Pengadaan : [***]                        |
+|  | Sektor Fasilitas: [ Laboratorium / Wi-Fi / Gedung / Perpustakaan v]  |
+|  | Nominal (Rp)    : [***]                        |
+|  | Upload Bukti    : [ Choose File... ] (Nota/Kuitansi Vendor)        |
+|  | [ Simpan Pengadaan ]                                               |
 +-----------------------------------------------------------------------+
-|  + Tabel Moderasi Verifikasi (Khusus Admin / DPM)                     |
-|  | Judul        | Bendahara | Foto Nota | Status   | Aksi             |
-|  | Cetak Banner | HMIF      | nota.jpg  | Pending  | [Approve][Reject]|
+|  + Tabel Moderasi & Audit Dokumen (Khusus Admin / Auditor)            |
+|  | Pengadaan     | Sektor   | Bukti Nota | Status   | Aksi            |
+|  | Router GKU    | Wi-Fi    | nota.pdf   | Pending  | [Approve][Reject]|
 +-----------------------------------------------------------------------+
 
 ```
@@ -128,55 +128,53 @@ Rancangan tata letak (*wireframe*) sederhana untuk antarmuka web FundFlow:
 
 ## 6. Skema Database
 
-Minimal 4 tabel: `users`, `organizations`, `financial_reports`, `accountability_reviews`.
+Minimal 4 tabel: `users`, `facility_sectors`, `expenditure_reports`, `facility_reviews`.
 
 ```mermaid
 erDiagram
-    USERS ||--o{ ORGANIZATIONS : mengelola
-    USERS ||--o{ FINANCIAL_REPORTS : mengunggah
-    ORGANIZATIONS ||--o{ FINANCIAL_REPORTS : memiliki
-    ORGANIZATIONS ||--o{ ACCOUNTABILITY_REVIEWS : menerima
+    USERS ||--o{ EXPENDITURE_REPORTS : mengunggah
+    FACILITY_SECTORS ||--o{ EXPENDITURE_REPORTS : memiliki
+    FACILITY_SECTORS ||--o{ FACILITY_REVIEWS : menerima
+    USERS ||--o{ FACILITY_REVIEWS : memberikan
 
     USERS {
         bigint id PK
         string name
         string email
         string password
-        enum role "admin, treasurer, student"
+        enum role "admin, campus_staff, student"
         timestamp created_at
         timestamp updated_at
     }
 
-    ORGANIZATIONS {
+    FACILITY_SECTORS {
         bigint id PK
-        bigint user_id FK "Bendahara Utama"
-        string org_name "Contoh: HMIF, BEM, DPM"
-        string code "Contoh: HMIF"
-        decimal current_balance
+        string sector_name "Contoh: Laboratorium, Wi-Fi, Gedung Kuliah"
+        text description
+        decimal total_allocated_budget
         timestamp created_at
         timestamp updated_at
     }
 
-    FINANCIAL_REPORTS {
+    EXPENDITURE_REPORTS {
         bigint id PK
-        bigint organization_id FK
-        bigint user_id FK
-        string title "Contoh: Cetak Spanduk Lomba"
-        enum type "income, expense"
-        string category "Perlengkapan, Konsumsi, Kas"
+        bigint facility_sector_id FK
+        bigint user_id FK "Staff Keuangan/Sarpras"
+        string title "Contoh: Pembelian Router Wi-Fi Gedung Utama"
+        string vendor_name "Nama Supplier/Penyedia Jasa"
         decimal amount
-        string receipt_image "Path foto nota"
-        enum status "draft, verified, rejected"
+        string receipt_document "Path foto nota/dokumen pengadaan"
+        enum status "pending, verified, rejected"
         timestamp created_at
         timestamp updated_at
     }
 
-    ACCOUNTABILITY_REVIEWS {
+    FACILITY_REVIEWS {
         bigint id PK
-        bigint organization_id FK
-        bigint user_id FK
+        bigint facility_sector_id FK
+        bigint user_id FK "Mahasiswa"
         integer rating "Skor 1-5 Bintang"
-        text review_comment "Ulasan transparansi"
+        text review_comment "Ulasan kondisi fasilitas riil di kampus"
         enum status "pending, approved, rejected"
         timestamp created_at
         timestamp updated_at
@@ -186,10 +184,10 @@ erDiagram
 
 **Penjelasan relasi:**
 
-* 1 `users` (role `treasurer`) mengelola 1 `organizations` dan mengunggah banyak `financial_reports`.
-* 1 `organizations` memiliki banyak `financial_reports` (pemasukan & pengeluaran).
-* 1 `organizations` menerima banyak `accountability_reviews` (ulasan transparansi dari mahasiswa).
-* Admin/Auditor (`users` dengan role `admin`) memiliki kewenangan authorization untuk memverifikasi `status` pada `financial_reports` dan memoderasi `accountability_reviews`.
+* 1 `users` (role `campus_staff`) mengunggah banyak `expenditure_reports` pengadaan fasilitas kampus.
+* 1 `facility_sectors` (misal: Sektor Wi-Fi) memiliki banyak `expenditure_reports` (laporan pengeluaran/maintenance).
+* 1 `facility_sectors` menerima banyak `facility_reviews` (ulasan kondisi riil fasilitas dari mahasiswa).
+* Admin/Auditor (`users` dengan role `admin`) memiliki kewenangan authorization untuk memverifikasi `status` pada `expenditure_reports` serta memoderasi `facility_reviews`.
 
 ```
 
